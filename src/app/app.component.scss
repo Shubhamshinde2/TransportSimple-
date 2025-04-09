@@ -1,0 +1,93 @@
+.trip-container {
+    padding: 20px;
+    text-align: center;
+  
+    .input-section {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+  
+      input, button {
+        padding: 8px 12px;
+        border-radius: 6px;
+      }
+  
+      button {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        &:disabled { background: #ccc; }
+      }
+    }
+  
+    .timeline-wrapper {
+      position: relative;
+      padding-top: 50px;
+    }
+  
+    .timeline-line {
+      position: relative;
+      height: 4px;
+      background: #ccc;
+      margin: 0 auto;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      animation: expandLine 1s ease-out forwards;
+  
+      .trip-point {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: -25px;  
+  
+        span {
+          font-size: 14px;
+          margin-bottom: 4px;
+          font-weight: 500;
+          color: #333;
+        }
+  
+        .start-dot, .end-dot {
+          width: 28px;
+          height: 28px;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+  
+        .start-dot {
+          background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png');
+        }
+  
+        .end-dot {
+          background-image: url('https://cdn-icons-png.flaticon.com/512/252/252025.png');
+        }
+      }
+  
+      .car {
+        position: absolute;
+        top: -25px;
+        width: 40px;
+        height: 30px;
+        background-image: url('../assets/delivery.png'); 
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: left 2s ease-in-out;
+      }
+    }
+  
+    @keyframes expandLine {
+      from { width: 0; }
+      to { width: 90%; }
+    }
+  }
+
+  .level-2 {
+    background-color: #28a745;
+  }
+  
+  

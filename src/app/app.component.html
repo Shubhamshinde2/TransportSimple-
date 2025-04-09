@@ -1,0 +1,57 @@
+<div class="trip-container">
+    <h2>Trip Timeline</h2>
+  
+    <form [formGroup]="tripForm" (ngSubmit)="addTrip()" class="input-section">
+      <select formControlName="start">
+        <option value="">Select Start City</option>
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+  
+      <select formControlName="end">
+        <option value="">Select End City</option>
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+  
+      <button type="submit" [disabled]="tripForm.invalid">Add Trip</button>
+    </form>
+  
+    <div *ngIf="trips.length">
+      <h3>Select Route Type</h3>
+      <label>
+        <input type="radio" name="routeType" value="continued" [(ngModel)]="routeTypeMessage" (change)="checkRouteType()" /> Continued
+      </label>
+      <label>
+        <input type="radio" name="routeType" value="nonContinued" [(ngModel)]="routeTypeMessage" (change)="checkRouteType()" /> Non-Continued
+      </label>
+      <label>
+        <input type="radio" name="routeType" value="level2" [(ngModel)]="routeTypeMessage" (change)="checkRouteType()" /> Level 2
+      </label>
+  
+      <p>{{ routeTypeMessage }}</p>
+    </div>
+  
+    <div class="timeline-wrapper" *ngIf="trips.length">
+      <div class="road">
+
+        <div *ngFor="let trip of trips; let i = index" class="trip-point" [ngClass]="{'level-1': trip.level === 1, 'level-2': trip.level === 2}">
+          <span class="trip-label">{{ trip.start }}</span>
+          <div class="start-dot"></div>
+        </div>
+  
+        <div *ngFor="let trip of trips; let i = index" class="trip-point" [ngClass]="{'level-1': trip.level === 1, 'level-2': trip.level === 2}">
+          <span class="trip-label">{{ trip.end }}</span>
+          <div class="end-dot"></div>
+        </div>
+  
+
+        <div class="car" [ngStyle]="{ left: carPosition + '%' }"></div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+
+  <router-outlet></router-outlet>
+  
